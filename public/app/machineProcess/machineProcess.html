@@ -1,8 +1,8 @@
 
-<nav class="navbar navbar-default"  style="background-color: #F94C4C;">
-    <div class="navbar-header">
+<nav class="navbar navbar-primary" style="background-color: #F94C4C;">
+
         <ul class="nav navbar-nav">
-            <li><a href="#">MACHINE PROCESS</a></li>
+            <li><a href="#">DALIY PRODECTION</a></li>
 
         </ul>
     </div>
@@ -24,11 +24,11 @@
 
 
 
-<div class="container-fluid">
+<div class="container">
 
     <div class="row">
         <div class="col-md-12">
-            <h2 class="page-head-line">Machine Process</h2>
+            <h2 class="page-head-line">Daliy Production</h2>
 
         </div>
     </div>
@@ -39,56 +39,113 @@
             <ng-form name="numberForm">
                 <!-- Modal content-->
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" style="color: blue">New Registration:</h4>
+                    <div class="modal-header" style="background-color: #F94C4C;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" style="color: #faffff">Add New</h4>
                     </div>
                     <div class="modal-body">
 
-                        <!--<div class="form-group">-->
-                        <!--<label>DMI NO:</label>-->
-                        <!--<input type="text" ng-model="DMI_NO" class="form-control">-->
-                        <!--</div>-->
                         <div class="form-group">
-                            <label>Service Order Code:</label>
-                            <input type="text" ng-model="data.OrderCode"  class="form-control">
+                            <label>Machine No:</label>
+                            <input type="text" ng-model="editableData.Additional"  class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>ModelName:</label>
-                            <!--<input type="text" ng-model="data.ModelName" class="form-control">-->
-                            <select  ng-model="choosenModel" ng-change="modelSelected(choosenModel)" class="form-control">
-                                <option ng-value="mdl.id" ng-repeat="mdl in models">{{mdl.modelName}}</option>
-                            </select>
+                            <label>Work OrderNo:</label>
+                            <input type="text" ng-model="editableData.Purpose"  class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>ModelType:</label>
-                            <!--<input type="text" ng-model="data.ModelType" class="form-control">-->
-                            <select id="serviceType" ng-model="choosenService" ng-change="serviceSelected(choosenService)" class="form-control">
-
-                                <option ng-value="service.serviceName" ng-repeat="service in services">{{service.serviceName}}</option>
-
-                            </select>
+                            <label>Customer Name:</label>
+                            <input type="text" ng-model="editableData.Employee" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Vehicle No:</label>
-                            <input type="text" ng-model="data.Vehicle_No" class="form-control">
+                        <label>Size:</label>
+                          <input type="text" ng-model="editableData.Employee" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Vehicle Milege:</label>
-                            <input type="text" ng-model="data.VehicleMilege" class="form-control">
+                            <label>Quty:</label>
+                            <input type="text" ng-model="editableData.Employee" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Bay No:</label>
-                            <input type="text" ng-model="data.Bay_No" class="form-control">
+                            <label>Date:</label>
+                            <input type="text" ng-model="editableData.Employee" class="form-control">
                         </div>
-
 
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" ng-disabled="numberForm.$invalid" ng-click="saveNewJob(data)" data-dismiss="modal">Save</button>
-                        <button type="button" class="btn btn-primary" ng-click="close()" data-dismiss="modal">Close</button>
+                    <div class="modal-footer" style="background-color: #F94C4C;">
+                        <button type="button" class="btn btn-success" ng-disabled="numberForm.$invalid" ng-click="saveAdditional()" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-success" ng-click="close()" data-dismiss="modal">Close</button>
                     </div>
 
                 </div>
             </ng-form>
         </div>
     </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="background-color: #F94C4C;">Production
+            <div class="pull-right">
+                <a data-toggle="modal" id="addAdditionalModal" data-target="#myModal"><i class="fa fa-book" style="color: HighlightText" aria-hidden="true">Add Production</i></a>
+            </div>
+
+        </div>
+
+
+        <div class="panel-body">
+
+            <table class="table table-responsive">
+                <thead style="background-color: #337ab7">
+                <tr>
+                    <th>ID</th>
+                    <th>Machine No</th>
+                    <th>Work OrderNo</th>
+                    <th>Customer Name</th>
+                    <th>Size</th>
+                    <th>Quty</th>
+                    <th>Date</th>
+                    <th>Option</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>MAC001</td>
+                    <td>WRK001</td>
+                    <td>Mohan</td>
+                    <td>12mm</td>
+                    <td>100</td>
+                    <td>Dec-19-16</td>
+                    <td>
+                        <span class="fa fa-pencil-square fa-1x" style="color: red" aria-hidden="true" data-toggle="modal" data-target="#myModal" ng-click="Edit(data)"  aria-hidden="true"></span>
+                        <span class="fa fa-window-close"  style="color: red" aria-hidden="true" ng-click="delete(data)"></span>
+                        <!--<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">Edit</button>-->
+                        <!--<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">Delete</button>-->
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+
+
+        </div>
+
+        <div class="panel-footer">
+
+            <center>
+                    <pagination
+                    ng-model="cur_page"
+                    total-items="totalLength"
+                    items-per-page="items_per_page"
+                    max-size="max_size"
+                    boundary-links="true">
+                    </pagination>
+            </center>
+
+        </div>
+
+    </div>
+
+
+</div>
+
