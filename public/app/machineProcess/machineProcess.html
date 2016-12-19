@@ -1,0 +1,94 @@
+
+<nav class="navbar navbar-default"  style="background-color: #F94C4C;">
+    <div class="navbar-header">
+        <ul class="nav navbar-nav">
+            <li><a href="#">MACHINE PROCESS</a></li>
+
+        </ul>
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li class='pull-right'>
+
+                <a ng-click='goToDashboard()'>
+
+                    <i class="fa fa-reply" aria-hidden="true"></i>
+
+                </a>
+
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="page-head-line">Machine Process</h2>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <ng-form name="numberForm">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="color: blue">New Registration:</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <!--<div class="form-group">-->
+                        <!--<label>DMI NO:</label>-->
+                        <!--<input type="text" ng-model="DMI_NO" class="form-control">-->
+                        <!--</div>-->
+                        <div class="form-group">
+                            <label>Service Order Code:</label>
+                            <input type="text" ng-model="data.OrderCode"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>ModelName:</label>
+                            <!--<input type="text" ng-model="data.ModelName" class="form-control">-->
+                            <select  ng-model="choosenModel" ng-change="modelSelected(choosenModel)" class="form-control">
+                                <option ng-value="mdl.id" ng-repeat="mdl in models">{{mdl.modelName}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>ModelType:</label>
+                            <!--<input type="text" ng-model="data.ModelType" class="form-control">-->
+                            <select id="serviceType" ng-model="choosenService" ng-change="serviceSelected(choosenService)" class="form-control">
+
+                                <option ng-value="service.serviceName" ng-repeat="service in services">{{service.serviceName}}</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Vehicle No:</label>
+                            <input type="text" ng-model="data.Vehicle_No" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Vehicle Milege:</label>
+                            <input type="text" ng-model="data.VehicleMilege" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Bay No:</label>
+                            <input type="text" ng-model="data.Bay_No" class="form-control">
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" ng-disabled="numberForm.$invalid" ng-click="saveNewJob(data)" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-primary" ng-click="close()" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </ng-form>
+        </div>
+    </div>

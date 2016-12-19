@@ -1,0 +1,34 @@
+<link rel="stylesheet" type="text/css" href="..../../app/css/style.css"/>
+
+
+<script>
+
+    function check_values() {
+        if ($("#username").val().length != 0 && $("#password").val().length != 0) {
+            $("#button1").removeClass("hidden").animate({ left: '250px' });;
+            $("#lock1").addClass("hidden").animate({ left: '250px' });;
+        }
+    }
+
+</script>
+
+<div class="container">
+    <div class="row colored" style="margin-top: 20%">
+        <div id="contentdiv" class="contcustom">
+            <span class="fa fa-spinner bigicon"></span>
+            <h2>Login</h2>
+            <div>
+                <input id="username" type="text" placeholder="username" ng-model="data.userName">
+                <input id="password" type="password" placeholder="password" ng-model="data.password">
+                <button id="button1" class="btn btn-default wide hidden"><span class="fa fa-check med">LOGIN</span></button>
+                <button id="lock1" style="background-color: red;" class="fa fa-user-o medhidden redborder" ng-click="login(data)">&nbsp;&nbsp;<font color="#fffafa">LOGIN</font></button>
+            </div>
+            <div>
+                <br>
+                <p>
+                    <a class="btn btn-link" class="text-muted">Forget Password?</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
