@@ -22,6 +22,11 @@
             $window.location.href='/workOrderProcess';
 
         }
+        $scope.goToModels=function()
+        {
+            $window.location.href='/workOrderProcess';
+
+        }
 
     }
 
