@@ -1,10 +1,10 @@
 
 <nav class="navbar navbar-primary" style="background-color: #F94C4C;">
 
-        <ul class="nav navbar-nav">
-            <li><a href="#">DALIY PRODECTION</a></li>
+    <ul class="nav navbar-nav">
+        <li><a href="#">Work Order</a></li>
 
-        </ul>
+    </ul>
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
@@ -28,7 +28,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h2 class="page-head-line">Daliy Production</h2>
+            <h2 class="page-head-line">Work Order</h2>
 
         </div>
     </div>
@@ -46,32 +46,44 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>Machine No:</label>
+                            <label>Work OrderNo:</label>
                             <input type="text" ng-model="editableData.Additional"  class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Work OrderNo:</label>
+                            <label>Size:</label>
                             <input type="text" ng-model="editableData.Purpose"  class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Customer Name:</label>
+                            <label>Curent process:</label>
+                            <select class="form-control">
+                                <option>---Select---</option>
+
+                            </select>
+
+                        <div class="form-group">
+                            <label>Ok Quty:</label>
                             <input type="text" ng-model="editableData.Employee" class="form-control">
                         </div>
                         <div class="form-group">
-                        <label>Size:</label>
-                          <input type="text" ng-model="editableData.Employee" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Quty:</label>
+                            <label>Re-workQuty:</label>
                             <input type="text" ng-model="editableData.Employee" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Date:</label>
-                            <datepicker>
-                                <input ng-model="date" type="text" class="form-control" placeholder="please select date"/>
-                            </datepicker>
+                            <label>Reject Quty:</label>
+                            <input type="text" ng-model="editableData.Employee" class="form-control">
                         </div>
-                        <br>
+
+                            <div class="form-group">
+                                <label>Next Process:</label>
+                                <input type="text" ng-model="editableData.Employee" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Date:</label>
+                                <datepicker>
+                                    <input ng-model="date" type="text" class="form-control" placeholder="please select date"/>
+                                </datepicker>
+                            </div>
+                            <br>
 
                     </div>
                     <div class="modal-footer" style="background-color: #F94C4C;">
@@ -80,14 +92,15 @@
                     </div>
 
                 </div>
+                </div>
             </ng-form>
         </div>
     </div>
 
     <div class="panel panel-primary">
-        <div class="panel-heading" style="background-color: #F94C4C;">Production
+        <div class="panel-heading" style="background-color: #F94C4C;">Work Order Entry
             <div class="pull-right">
-                <a data-toggle="modal" id="addAdditionalModal" data-target="#myModal"><i class="fa fa-book" style="color: HighlightText" aria-hidden="true">Add Production</i></a>
+                <a data-toggle="modal" id="addAdditionalModal" data-target="#myModal"><i class="fa fa-book" style="color: HighlightText" aria-hidden="true">Add New Work</i></a>
             </div>
 
         </div>
@@ -99,11 +112,12 @@
                 <thead style="background-color: #337ab7">
                 <tr>
                     <th>ID</th>
-                    <th>Machine No</th>
                     <th>Work OrderNo</th>
-                    <th>Customer Name</th>
                     <th>Size</th>
-                    <th>Quty</th>
+                    <th>Ok Quty</th>
+                    <th>Reject Quty</th>
+                    <th>Next Process</th>
+                    <th>Curent process</th>
                     <th>Date</th>
                     <th>Option</th>
                 </tr>
@@ -116,6 +130,7 @@
                     <td>Mohan</td>
                     <td>12mm</td>
                     <td>100</td>
+                    <td>Progress</td>
                     <td>Dec-19-16</td>
                     <td>
                         <span class="fa fa-pencil-square fa-1x" style="color: red" aria-hidden="true" data-toggle="modal" data-target="#myModal" ng-click="Edit(data)"  aria-hidden="true"></span>
@@ -136,13 +151,13 @@
         <div class="panel-footer">
 
             <center>
-                    <pagination
-                    ng-model="cur_page"
-                    total-items="totalLength"
-                    items-per-page="items_per_page"
-                    max-size="max_size"
-                    boundary-links="true">
-                    </pagination>
+                <pagination
+                        ng-model="cur_page"
+                        total-items="totalLength"
+                        items-per-page="items_per_page"
+                        max-size="max_size"
+                        boundary-links="true">
+                </pagination>
             </center>
 
         </div>

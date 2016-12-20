@@ -17,6 +17,12 @@
          $window.location.href='/machineProcess';
      }
 
+        $scope.goToOrder=function()
+        {
+            $window.location.href='/workOrderProcess';
+
+        }
+
     }
 
 })();

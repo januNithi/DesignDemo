@@ -19,8 +19,12 @@
             })
             .when('/machineProcess', {
             templateUrl: '../app/machineProcess/machineProcess.html',
-            controller: 'machineProcessControll'
-            });
+            controller: 'machineProcessController'
+            })
+            .when('/workOrderProcess', {
+            templateUrl: '../app/workOrderProcess/workOrderProcess.html',
+            controller: 'workOrderProcessController'
+        });
 
 
         $locationProvider.html5Mode(true);
