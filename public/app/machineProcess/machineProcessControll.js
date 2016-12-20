@@ -7,12 +7,17 @@
 
     machineProcessController.$inject = [
         '$scope',
-        'machineProcessService'
+        'machineProcessService',
+        '$window'
     ];
 
-    function machineProcessController($scope,machineProcessService) {
+    function machineProcessController($scope,machineProcessService,$window) {
 
+        $scope.goToDashboard=function()
+        {
+            $window.location.href='/dashboard';
 
+        }
 
     }
 

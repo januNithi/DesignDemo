@@ -7,11 +7,17 @@
 
     workOrderProcessController.$inject = [
         '$scope',
-        'workOrderProcessService'
+        'workOrderProcessService',
+        '$window'
     ];
 
-    function workOrderProcessController($scope,workOrderProcessService) {
+    function workOrderProcessController($scope,workOrderProcessService,$window) {
 
+        $scope.goToDashboard=function()
+        {
+            $window.location.href='/dashboard';
+
+        }
 
 
     }
