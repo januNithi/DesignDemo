@@ -17,6 +17,18 @@
             templateUrl: '../app/dashboard/dashboard.html',
             controller: 'dashboardController'
             })
+            .when('/addemployee', {
+                templateUrl: '../app/addEmployee/addEmployee.html',
+                controller: 'addEmployeeController'
+            })
+            .when('/addMachine', {
+                templateUrl: '../app/add Machine/addMachine.html',
+                controller: 'addMachineController'
+            })
+            .when('/addProcess', {
+                templateUrl: '../app/addProcess/addProcess.html',
+                controller: 'addProcessController'
+            })
             .when('/machineProcess', {
             templateUrl: '../app/machineProcess/machineProcess.html',
             controller: 'machineProcessController'
@@ -24,8 +36,11 @@
             .when('/workOrderProcess', {
             templateUrl: '../app/workOrderProcess/workOrderProcess.html',
             controller: 'workOrderProcessController'
-        });
-
+             })
+            .when('/workOrderEntry', {
+                templateUrl: '../app/workOrderEntery/workOrderEntry.html',
+                controller: 'workOrderEnteryController'
+            });
 
         $locationProvider.html5Mode(true);
     }
