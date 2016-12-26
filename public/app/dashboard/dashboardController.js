@@ -22,12 +22,28 @@
             $window.location.href='/workOrderProcess';
 
         }
-        $scope.goToModels=function()
+        $scope.loadMachine=function()
         {
-            $window.location.href='/workOrderProcess';
+            $window.location.href='/addMachine';
 
         }
+        $scope.loadEmp=function()
+        {
+            $window.location.href='/addemployee';
 
+        }
+        $scope.loadProcess=function()
+        {
+
+            $window.location.href='/addProcess';
+
+        }
+        $scope.goToWorkOrder=function()
+        {
+
+            $window.location.href='/workOrderEntry';
+
+        }
     }
 
 })();

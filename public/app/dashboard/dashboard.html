@@ -19,15 +19,44 @@
 
         <div class="row">
             <div class="col-md-3 col-sm-3 col-xs-6">
-                <a ng-click="loadData()">
-                    <div class="dashboard-div-wrapper bk-clr-one">
+                <a ng-click="loadEmp()">
+                    <div class="dashboard-div-wrapper bk-clr-six">
                         <i class="fa fa-upload" aria-hidden="true"></i>
                         <!--<div class="progress progress-striped active">-->
                         <!--<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">-->
                         <!--</div>-->
 
                         <!--</div>-->
-                        <h4>Daily Production </h4>
+                        <h4>Add Employee</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <a ng-click="loadMachine()">
+                    <div class="dashboard-div-wrapper bk-clr-four">
+                        <i class="fa fa-upload" aria-hidden="true"></i>
+                        <!--<div class="progress progress-striped active">-->
+                        <!--<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">-->
+                        <!--</div>-->
+
+                        <!--</div>-->
+                        <h4>Add machine</h4>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <a ng-click="loadProcess()">
+                    <div class="dashboard-div-wrapper bk-clr-two">
+                        <i class="fa fa-qrcode" aria-hidden="true"></i>
+                        <!--<div class="progress progress-striped active">-->
+                        <!--<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">-->
+                        <!--</div>-->
+
+                        <!--</div>-->
+                        <h4>Add Process</h4>
                     </div>
                 </a>
             </div>
@@ -41,26 +70,12 @@
                         <!--</div>-->
 
                         <!--</div>-->
-                        <h4>Work Order Entry</h4>
+                        <h4>Work Order</h4>
                     </div>
                 </a>
             </div>
 
 
-
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <a ng-click="goToModels()">
-                    <div class="dashboard-div-wrapper bk-clr-two">
-                        <i class="fa fa-qrcode" aria-hidden="true"></i>
-                        <!--<div class="progress progress-striped active">-->
-                        <!--<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">-->
-                        <!--</div>-->
-
-                        <!--</div>-->
-                        <h4>Machine Process</h4>
-                    </div>
-                </a>
-            </div>
             <!--<div class="col-md-3 col-sm-3 col-xs-6">-->
             <!--<a ng-click="registerOrder()">-->
             <!--<div class="dashboard-div-wrapper bk-clr-three">-->
@@ -76,7 +91,7 @@
             <!--</div>-->
 
             <div class="col-md-3 col-sm-3 col-xs-6">
-                <a ng-click="goToRegistration()">
+                <a ng-click="goToWorkOrder()">
                     <div class="dashboard-div-wrapper bk-clr-five">
                         <i class="fa fa-male" aria-hidden="true"></i>
                         <!--<div class="progress progress-striped active">-->
@@ -84,11 +99,24 @@
                         <!--</div>-->
 
                         <!--</div>-->
-                        <h4>Work Order Task</h4>
+                        <h4>Work Order Entry</h4>
                     </div>
                 </a>
             </div>
-        </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <a ng-click="loadData()">
+                    <div class="dashboard-div-wrapper bk-clr-one">
+                        <i class="fa fa-upload" aria-hidden="true"></i>
+                        <!--<div class="progress progress-striped active">-->
+                        <!--<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">-->
+                        <!--</div>-->
+
+                        <!--</div>-->
+                        <h4>Daily Production </h4>
+                    </div>
+                </a>
+            </div>
 
     </div>
 
