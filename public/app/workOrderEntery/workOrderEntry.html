@@ -1,0 +1,103 @@
+
+<nav class="navbar navbar-primary" style="background-color: #F94C4C;">
+
+    <ul class="nav navbar-nav">
+        <li><a href="#">WORK ORDER TRACKING</a></li>
+
+    </ul>
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li class='pull-right'>
+
+                <a ng-click='goToDashboard()'>
+
+                    <i class="fa fa-reply" aria-hidden="true"></i>
+
+                </a>
+
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="page-head-line">WORK ORDER TRACKING</h2>
+
+        </div>
+    </div>
+
+
+    <form name="myForm">
+           <label>Item Code:</label>
+        <div class="row">
+           <div class="col-md-11">
+            <input type="number" name="input" class="form-control" ng-model="example.value" min="0" max="100" required>
+        </div>
+          <div class="col-md-1">
+            <button type="button" ng-click="goCheck()" class="btn btn-info">GO</button>
+         </div>
+        </div>
+    </form>
+    <br>
+
+    <div class="panel panel-primary" ng-show="table">
+
+        <div class="panel-body">
+
+            <table class="table table-responsive" >
+                <thead style="background-color: #337ab7">
+                <tr>
+                    <th>ID</th>
+                    <th>Machine No</th>
+                    <th>Employee Name</th>
+                    <th>Progress</th>
+                    <th>Curent Progress</th>
+                    <th>Quty</th>
+                    <th>Order Date</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>MAC001</td>
+                    <td>WRK001</td>
+                    <td>Mohan</td>
+                    <td>12mm</td>
+                    <td>100</td>
+                    <td>Dec-19-16</td>
+                </tr>
+                </tbody>
+            </table>
+
+
+
+
+        </div>
+
+        <div class="panel-footer">
+
+            <center>
+                <pagination
+                        ng-model="cur_page"
+                        total-items="totalLength"
+                        items-per-page="items_per_page"
+                        max-size="max_size"
+                        boundary-links="true">
+                </pagination>
+            </center>
+
+        </div>
+
+    </div>
+
+
+</div>
+
