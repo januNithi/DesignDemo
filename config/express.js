@@ -6,6 +6,7 @@ var path=require('path');
 
 var session = require('express-session');
 
+ var mysql=require('mysql');
 
 module.exports=function(){
 
@@ -28,7 +29,8 @@ module.exports=function(){
     app.use(express.static('./public'));
 
     require('../route/layout.route')(app);
-    // require('')(app);
+    require('../route/vrenginners.route')(app);
+
     
     return app;
 };

@@ -12,8 +12,17 @@
     {
 
         return{
+            getProcessDetail:function()
+            {
 
+                return $http({
 
+                    method: 'post',
+                    url: '/getProcess/data'
+                })
+
+            }
+        
         }
     }
 

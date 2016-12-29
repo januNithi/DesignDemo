@@ -8,13 +8,55 @@
         '$http'
     ];
 
-    function addEmployeeservice($window,$http)
-    {
+    function addEmployeeservice($window,$http) {
 
-        return{
+        return {
 
 
+            getEmpDetail: function () {
+                return $http({
+
+                    method: 'post',
+                    url: '/getEmpData/Data'
+
+                });
+            },
+
+            employeeData: function (data) {
+
+                return $http({
+
+                    method: 'post',
+                    url: '/addEmployee/data',
+                    data: {
+                        id:data.id,
+                        empId: data.empId,
+                        Name: data.Name,
+                        Mob: data.Mob,
+                        Shift: data.Shift
+
+
+                    }
+
+                })
+
+            },
+
+            deleteEmployeeData:function(data)
+            {
+                return $http({
+
+                    method: 'post',
+                    url: '/deleteEmployee/data',
+                    data: {
+                        id:data.id
+                    }
+
+                })
+
+            }
         }
     }
+
 
 })();

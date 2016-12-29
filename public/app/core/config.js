@@ -29,6 +29,10 @@
                 templateUrl: '../app/addProcess/addProcess.html',
                 controller: 'addProcessController'
             })
+            .when('/itemEntry', {
+                templateUrl: '../app/itemEntry/itemEntry.html',
+                controller: 'itemEntryController'
+            })
             .when('/machineProcess', {
             templateUrl: '../app/machineProcess/machineProcess.html',
             controller: 'machineProcessController'

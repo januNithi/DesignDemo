@@ -22,8 +22,6 @@
 </nav>
 
 
-
-
 <div class="container">
 
     <div class="row">
@@ -36,46 +34,52 @@
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-            <ng-form name="numberForm">
+            <form name="myForm">
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header" style="background-color: #F94C4C;">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" style="color: #faffff">Add New</h4>
+                        <h4 class="modal-title" ng-if="!emp.id">New Registration</h4>
+                        <h4 class="modal-title" ng-if="emp.id">Edit Registration</h4>
                     </div>
                     <div class="modal-body">
 
                         <div class="form-group">
                             <label>Employee ID:</label>
-                            <input type="text" ng-model="editableData.Additional"  class="form-control">
+                            <input type="text" ng-model="emp.empId" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Employee Name:</label>
-                            <input type="text" ng-model="editableData.Purpose"  class="form-control">
+                            <input type="text" ng-model="emp.Name"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Contact Information</label>
-                            <input type="text" ng-model="editableData.Employee" class="form-control">
+                            <input type="text" ng-model="emp.Mob" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Shift / Group:</label>
-                            <select  ng-model="editableData.Employee" class="form-control"></select>
+                            <select  ng-model="emp.Shift" class="form-control">
+                                <option value="0">---SELECT</option>
+                                <option ng-repeat="data in shiftData">{{data}}</option>
+
+                            </select>
                         </div>
                         <br>
 
                     </div>
                     <div class="modal-footer" style="background-color: #F94C4C;">
-                        <button type="button" class="btn btn-success" ng-disabled="numberForm.$invalid" ng-click="saveAdditional()" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-success" ng-disabled="myForm.$invalid" ng-click="saveEmployee(emp)" data-dismiss="modal">Save</button>
                         <button type="button" class="btn btn-success" ng-click="close()" data-dismiss="modal">Close</button>
                     </div>
 
                 </div>
-            </ng-form>
+            </form>
         </div>
     </div>
 
     <div class="panel panel-primary">
-        <div class="panel-heading" style="background-color: #F94C4C;">Production
+        <div class="panel-heading" style="background-color: #F94C4C;">
+         Search:&nbsp;<input type="text" style="background-color: #a8ac95" placeholder="Query" ng-model="SEARCH">
             <div class="pull-right">
                 <a data-toggle="modal" id="addAdditionalModal" data-target="#myModal"><i class="fa fa-book" style="color: HighlightText" aria-hidden="true">Add Employee</i></a>
             </div>
@@ -97,12 +101,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mohan001</td>
-                    <td>Mohan</td>
-                    <td>9043814022</td>
-                    <td>Morning</td>
+                    <tr ng-repeat="data in filteredDoc | filter:SEARCH">
+                    <td scope="row">{{data.id}}</td>
+                    <td>{{data.empId}}</td>
+                    <td>{{data.Name}}</td>
+                    <td>{{data.Mob}}</td>
+                    <td>{{data.Shift}}</td>
 
                     <td>
                         <span class="fa fa-pencil-square fa-1x" style="color: red" aria-hidden="true" data-toggle="modal" data-target="#myModal" ng-click="Edit(data)"  aria-hidden="true"></span>
@@ -114,9 +118,6 @@
                 </tr>
                 </tbody>
             </table>
-
-
-
 
         </div>
 
@@ -136,6 +137,10 @@
 
     </div>
 
-
 </div>
+
+
+
+
+
 

@@ -38,22 +38,28 @@
                         <h4 class="modal-title" style="color: #faffff">Add New</h4>
                     </div>
                     <div class="modal-body">
-
+                        <div class="form-group">
+                            <label>Item Code:</label>
+                            <select ng-model="process.ItemCode" class="form-control">
+                                <option value="0">---select---</option>
+                                <option ng-repeat="data in getProcess">{{data.ItemCode}}</option>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label>Process Name:</label>
-                            <input type="text" ng-model="editableData.Purpose"  class="form-control">
+                            <input type="text" ng-model="process.ProcessName"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Description:</label>
-                            <input type="text"  ng-model="editableData.Employee" class="form-control">
+                            <input type="text"  ng-model="process.Description" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Process:</label>
                             <br>
-                            <input type="radio" id="radio1" ng-model="stdentData.Gender"  value="Male" tabindex="1" />
+                            <input type="radio" id="radio1" ng-model="process.Status"  value="InProcess" tabindex="1" />
                             <label for="radio1">InProcess</label>&nbsp;
 
-                            <input type="radio" id="radio2" ng-model="stdentData.Gender" value="Female" tabindex="2"/>
+                            <input type="radio" id="radio2" ng-model="process.Status" value="OutProcess" tabindex="2"/>
                             <label for="radio1">OutProcess</label>
                         </div>
                         <br>
@@ -83,16 +89,20 @@
                 <thead style="background-color: #337ab7">
                 <tr>
                     <th>ID</th>
+                    <th>Item Code</th>
                     <th>Process Name</th>
+                    <th>Process Status</th>
                     <th>Description</th>
                     <th>Option</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mohan001</td>
-                    <td>Mohan</td>
+                <tr ng-repeat="data in getProcess">
+                    <th scope="row">{{data.id}}</th>
+                    <td>{{data.ItemCode}}</td>
+                    <td>{{data.ProcessName}}</td>
+                    <td>{{data.Status}}</td>
+                    <td>{{data.Description}}</td>
                     <td>
                         <span class="fa fa-pencil-square fa-1x" style="color: red" aria-hidden="true" data-toggle="modal" data-target="#myModal" ng-click="Edit(data)"  aria-hidden="true"></span>
                         <span class="fa fa-window-close"  style="color: red" aria-hidden="true" ng-click="delete(data)"></span>

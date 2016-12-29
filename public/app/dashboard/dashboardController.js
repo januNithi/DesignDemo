@@ -44,6 +44,11 @@
             $window.location.href='/workOrderEntry';
 
         }
+        $scope.loadItem=function()
+        {
+            $window.location.href='/itemEntry';
+
+        }
     }
 
 })();

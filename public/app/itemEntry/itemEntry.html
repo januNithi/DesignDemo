@@ -2,7 +2,7 @@
 <nav class="navbar navbar-primary" style="background-color: #F94C4C;">
 
     <ul class="nav navbar-nav">
-        <li><a href="#">Add Machine</a></li>
+        <li><a href="#">Add Item</a></li>
 
     </ul>
     </div>
@@ -22,13 +22,11 @@
 </nav>
 
 
-
-
 <div class="container">
 
     <div class="row">
         <div class="col-md-12">
-            <h2 class="page-head-line">Add Machine</h2>
+            <h2 class="page-head-line">Add Iteam</h2>
 
         </div>
     </div>
@@ -36,51 +34,62 @@
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-            <ng-form name="numberForm">
+            <form name="myForm">
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header" style="background-color: #F94C4C;">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" ng-if="!machine.id">New Registration</h4>
-                        <h4 class="modal-title" ng-if="machine.id">Edit Registration</h4>
+                        <h4 class="modal-title" ng-if="!emp.id">New Registration</h4>
+                        <h4 class="modal-title" ng-if="emp.id">Edit Registration</h4>
                     </div>
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>Machine ID:</label>
-                            <input type="text" ng-model="machine.MachineId"  class="form-control">
+                            <label>Iteam Code:</label>
+                            <input type="text" ng-model="iteam.IteamCode" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Machine Make:</label>
-                            <input type="text" ng-model="machine.Machinemake"  class="form-control">
+                            <label>Name:</label>
+                            <input type="text" ng-model="iteam.Name"  class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Machine Name</label>
-                            <input type="text" ng-model="machine.MachineName" class="form-control">
+                            <label>Quty:</label>
+                            <input type="text" ng-model="iteam.Qty"  class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Description:</label>
-                            <input type="text"  ng-model="machine.Description" class="form-control">
+                            <label>Purchase By:</label>
+                            <input type="text" ng-model="iteam.purchaseBy" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Invoice No:</label>
+                            <input type="text" ng-model="iteam.invoiceNo" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Location:</label>
+                            <input type="text" ng-model="iteam.location" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Shope Name:</label>
+                            <input type="text" ng-model="iteam.shopeName" class="form-control">
                         </div>
                         <br>
 
                     </div>
                     <div class="modal-footer" style="background-color: #F94C4C;">
-                        <button type="button" class="btn btn-success" ng-disabled="numberForm.$invalid" ng-click="saveMachineData(machine)" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-success" ng-disabled="myForm.$invalid" ng-click="saveItem(iteam)" data-dismiss="modal">Save</button>
                         <button type="button" class="btn btn-success" ng-click="close()" data-dismiss="modal">Close</button>
                     </div>
 
                 </div>
-            </ng-form>
+            </form>
         </div>
     </div>
 
     <div class="panel panel-primary">
-        <div class="panel-heading" style="background-color:#F94C4C;">
-            Search:&nbsp;<input type="text" style="background-color: #a8ac95" placeholder="Query" ng-model="SEARCH">
-
+        <div class="panel-heading" style="background-color: #F94C4C;">
+            Search:&nbsp;<input type="text" style="background-color: #a8ac95" placeholder="Query" ng-model="search">
             <div class="pull-right">
-                <a data-toggle="modal" id="addAdditionalModal" data-target="#myModal"><i class="fa fa-book" style="color: HighlightText" aria-hidden="true">Add Machine</i></a>
+                <a data-toggle="modal" id="addAdditionalModal" data-target="#myModal"><i class="fa fa-book" style="color: HighlightText" aria-hidden="true">Add Iteam</i></a>
             </div>
 
         </div>
@@ -92,20 +101,27 @@
                 <thead style="background-color: #337ab7">
                 <tr>
                     <th>ID</th>
-                    <th>Machine ID</th>
-                    <th>Machine Make</th>
-                    <th>Machine Name</th>
-                    <th>Description</th>
+                    <th>Iteam Code</th>
+                    <th>Name</th>
+                    <th>Quty</th>
+                    <th>Purchase By</th>
+                    <th>Invoice No</th>
+                    <th>Location</th>
+                    <th>Shope Name</th>
                     <th>Option</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="data in machineData | filter:SEARCH">
-                    <th scope="row">{{data.id}}</th>
-                    <td>{{data.MachineId}}</td>
-                    <td>{{data.Machinemake}}</td>
-                    <td>{{data.MachineName}}</td>
-                    <td>{{data.Description}}</td>
+                <tr ng-repeat="data in getIteam | filter:search">
+                    <td scope="row">{{data.id}}</td>
+                    <td>{{data.IteamCode}}</td>
+                    <td>{{data.Name}}</td>
+                    <td>{{data.Qty}}</td>
+                    <td>{{data.purchaseBy}}</td>
+                    <td>{{data.invoiceNo}}</td>
+                    <td>{{data.location}}</td>
+                    <td>{{data.shopeName}}</td>
+
                     <td>
                         <span class="fa fa-pencil-square fa-1x" style="color: red" aria-hidden="true" data-toggle="modal" data-target="#myModal" ng-click="Edit(data)"  aria-hidden="true"></span>
                         <span class="fa fa-window-close"  style="color: red" aria-hidden="true" ng-click="delete(data)"></span>
@@ -116,9 +132,6 @@
                 </tr>
                 </tbody>
             </table>
-
-
-
 
         </div>
 
@@ -138,6 +151,10 @@
 
     </div>
 
-
 </div>
+
+
+
+
+
 
