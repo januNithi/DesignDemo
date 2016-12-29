@@ -126,6 +126,18 @@ exports.getProcess=function(req,res)
 
 };
 
+exports.addProcess=function(req,res)
+{
+    var data=req.body;
+    config.addProcessDetails(data).then(function(result)
+    {
+
+        res.send(result);
+
+    });
+
+};
+
 // <-------Process DATA----->
 
 

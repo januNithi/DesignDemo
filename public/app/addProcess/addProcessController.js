@@ -28,6 +28,22 @@
         };
         $scope.getProcessData();
 
+        $scope.saveProcess=function(data){
+            addEmployeeservice.saveProcessData(data).then(function(result){
+                
+                alert('Successfully Registered !!!!');
+                $scope.getProcessData();
+                $scope.process='';
+                
+
+
+            },function(err){
+                alert(err)
+            });
+
+
+        };
+
         $scope.Edit=function(data)
         {
 

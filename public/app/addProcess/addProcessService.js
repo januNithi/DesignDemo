@@ -21,6 +21,26 @@
                     url: '/getProcess/data'
                 })
 
+            },
+            saveProcessData:function(data)
+            {
+
+                return $http({
+
+                    method: 'post',
+                    url: '/addProcess/data',
+                    data:{
+
+                        id:data.id,
+                        ItemCode:data.ItemCode,
+                        ProcessName:data.ProcessName,
+                        Status:data.Status,
+                        Description:data.Description
+
+                    }
+
+                })
+
             }
         
         }

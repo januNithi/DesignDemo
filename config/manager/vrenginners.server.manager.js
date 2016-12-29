@@ -278,6 +278,37 @@ function getProcessDetails() {
 
 
 
+function addProcessDetails(data){
+
+    var deferred = q.defer();
+    if(data.id==undefined) {
+
+        var query = "insert into addprocess(ItemCode,ProcessName,Status,Description ) values('" + data.IteamCode + "','" + data.ProcessName + "','" + data.Status + "','" + data.Description + "')";
+
+    }else
+    {
+        var query="update addprocess set IteamCode='"+data.IteamCode+"',ProcessName='"+data.ProcessName+"',Status='"+data.Status+"',Description='"+data.Description+"' where id='"+data.id+"'";
+
+    }
+    con.query(query,function(err,result){
+
+        if(err){
+
+            deferred.reject(err);
+
+
+        }else
+        {
+
+            deferred.resolve(result);
+        }
+
+    });
+
+    return deferred.promise;
+};
+
+
 
 module.exports={
 
@@ -293,6 +324,7 @@ module.exports={
     addIteamDetails:addIteamDetails,
     deleteIteamDetails:deleteIteamDetails,
 
-    getProcessDetails:getProcessDetails
+    getProcessDetails:getProcessDetails,
+    addProcessDetails:addProcessDetails
     
 };

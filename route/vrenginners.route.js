@@ -15,6 +15,8 @@ module.exports=function (app) {
     app.post('/deleteIteam/Data',config.deleteIteam);
 
     app.post('/getProcess/data',config.getProcess);
+    app.post('/addProcess/data',config.addProcess);
+
     
 };
 
