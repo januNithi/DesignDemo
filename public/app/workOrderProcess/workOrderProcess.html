@@ -46,44 +46,60 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>Work OrderNo:</label>
-                            <input type="text" ng-model="editableData.Additional"  class="form-control">
+                            <label>Item Code:</label>
+                           <select class="form-control"  ng-change="selectedItemChanged(workorder)" ng-model="workorder.itemcode">
+                               <option>--select--</option>
+                               <option ng-repeat="data in getIteam">{{data.IteamCode}}</option>
+                           </select>
                         </div>
                         <div class="form-group">
-                            <label>Item Code:</label>
-                            <input type="text" ng-model="editableData.Purpose"  class="form-control">
+                            <label>Stack Quty:</label>
+                            <input type="text" ng-model="workorder.Qty"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Location:</label>
+                            <input type="text" ng-model="workorder.location"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Purchase OrderNo:</label>
-                            <input type="text" ng-model="editableData.Purpose"  class="form-control">
+                            <input type="text" ng-model="workorder.invoiceNo"  class="form-control">
                         </div>
+                        <!--<div class="form-group">-->
+                            <!--<label>Purchase By:</label>-->
+                            <!--<input type="text" ng-model="workorder.purchaseBy" class="form-control">-->
+                        <!--</div>-->
+                        <div class="form-group">
+                            <label>Process Status:</label>
+                            <input type="text" ng-model="workorder.Status" class="form-control">
+                        </div>
+
                         <div class="form-group">
                             <label>Customer Name:</label>
-                            <input type="text" ng-model="editableData.Purpose"  class="form-control">
+                            <input type="text" ng-model="workorder.cusName"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Size:</label>
-                            <input type="text" ng-model="editableData.Purpose"  class="form-control">
+                            <input type="text" ng-model="workorder.size"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Process Quty:</label>
-                            <input type="text" ng-model="editableData.Purpose"  class="form-control">
+                            <input type="text" ng-model="workorder.processQuty"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Entroll By:</label>
-                            <input type="text" ng-model="editableData.Purpose"  class="form-control">
+                            <input type="text" ng-model="workorder.entrollby"  class="form-control">
                         </div>
                             <div class="form-group">
                                 <label>Date:</label>
                                 <datepicker>
-                                    <input ng-model="date" type="text" class="form-control" placeholder="please select date"/>
+                                    <input ng-model="workorder.date" type="text" class="form-control" placeholder="please select date"/>
                                 </datepicker>
                             </div>
                             <br>
 
                     </div>
                     <div class="modal-footer" style="background-color: #F94C4C;">
-                        <button type="button" class="btn btn-success" ng-disabled="numberForm.$invalid" ng-click="saveAdditional()" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-success" ng-disabled="numberForm.$invalid" ng-click="saveWorkOrder(workorder)" data-dismiss="modal">Save</button>
                         <button type="button" class="btn btn-success" ng-click="close()" data-dismiss="modal">Close</button>
                     </div>
 

@@ -6,11 +6,13 @@
     addProcessController.$inject = [
         '$scope',
         'addProcessService',
+        'itemEntryService',
         '$window'
     ];
 
-    function addProcessController($scope,addProcessService,$window) {
+    function addProcessController($scope,addProcessService,itemEntryService,$window) {
         $scope.getProcess=[];
+        $scope.getIteam=[];
         $scope.goToDashboard=function()
         {
             $window.location.href='/dashboard';
@@ -28,8 +30,21 @@
         };
         $scope.getProcessData();
 
+
+        $scope.getItemData=function()
+        {
+            itemEntryService.getIteamDetail().then(function(result){
+
+                $scope.getIteam=result.data;
+
+
+            });
+
+        };
+        $scope.getItemData();
+
         $scope.saveProcess=function(data){
-            addEmployeeservice.saveProcessData(data).then(function(result){
+            addProcessService.saveProcessData(data).then(function(result){
                 
                 alert('Successfully Registered !!!!');
                 $scope.getProcessData();
@@ -41,6 +56,18 @@
                 alert(err)
             });
 
+
+        };
+
+        $scope.delete=function(data)
+        {
+
+            addProcessService.deleteProcessDetail(data).then(function(result){
+
+              alert('Delete Successfully');
+                $scope.getProcessData();
+
+            });
 
         };
 

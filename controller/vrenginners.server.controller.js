@@ -138,6 +138,34 @@ exports.addProcess=function(req,res)
 
 };
 
+exports.deleteProcess=function(req,res)
+{
+    var data=req.body;
+    console.log(data);
+    config.deleteProcessDetails(data).then(function(result)
+    {
+
+        res.send(result);
+
+    });
+
+};
+
 // <-------Process DATA----->
 
+// <-------WorkOrder DATA----->
+
+exports.addWorkOrder=function(req,res)
+{
+    var data=req.body;
+    config.addWorkOrderData(data).then(function(result)
+    {
+
+        res.send(result);
+
+    });
+
+};
+
+// <-------WorkOrder DATA----->
 

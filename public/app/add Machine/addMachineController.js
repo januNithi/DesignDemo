@@ -38,6 +38,7 @@
                 $scope.machineData=result.data;
                 $scope.getMachinedetails();
                 $scope.machine='';
+                alert('Successfully Registerd !!!!');
 
             });
 

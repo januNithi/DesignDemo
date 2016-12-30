@@ -31,7 +31,6 @@
                     url: '/addProcess/data',
                     data:{
 
-                        id:data.id,
                         ItemCode:data.ItemCode,
                         ProcessName:data.ProcessName,
                         Status:data.Status,
@@ -40,6 +39,21 @@
                     }
 
                 })
+
+            },
+            deleteProcessDetail:function(data)
+            {
+                return $http({
+
+                    method: 'post',
+                    url: '/deleteProcess/data',
+                    data:{
+
+                        ItemCode:data.ItemCode
+                    }
+
+                })
+
 
             }
         

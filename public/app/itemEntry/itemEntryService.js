@@ -27,7 +27,6 @@
                     method:'post',
                     url:'/addIteam/Data',
                     data:{
-                        id: data.id,
                         IteamCode: data.IteamCode,
                         Name: data.Name,
                         Qty: data.Qty,
@@ -49,7 +48,7 @@
                 method:'post',
                 url:'/deleteIteam/Data',
                 data:{
-                id: data.id
+                    IteamCode: data.IteamCode
             }
 
              });

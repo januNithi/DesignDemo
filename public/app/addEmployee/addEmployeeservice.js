@@ -29,7 +29,6 @@
                     method: 'post',
                     url: '/addEmployee/data',
                     data: {
-                        id:data.id,
                         empId: data.empId,
                         Name: data.Name,
                         Mob: data.Mob,
@@ -49,7 +48,7 @@
                     method: 'post',
                     url: '/deleteEmployee/data',
                     data: {
-                        id:data.id
+                        empId:data.empId
                     }
 
                 })

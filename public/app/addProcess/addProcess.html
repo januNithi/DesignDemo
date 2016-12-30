@@ -40,9 +40,9 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Item Code:</label>
-                            <select ng-model="process.ItemCode" class="form-control">
+                            <select ng-model="process.IteamCode" class="form-control">
                                 <option value="0">---select---</option>
-                                <option ng-repeat="data in getProcess">{{data.ItemCode}}</option>
+                                <option ng-repeat="data in getIteam">{{data.IteamCode}}</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -66,7 +66,7 @@
 
                     </div>
                     <div class="modal-footer" style="background-color: #F94C4C;">
-                        <button type="button" class="btn btn-success" ng-disabled="numberForm.$invalid" ng-click="saveProcess()" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-success" ng-disabled="numberForm.$invalid" ng-click="saveProcess(process)" data-dismiss="modal">Save</button>
                         <button type="button" class="btn btn-success" ng-click="close()" data-dismiss="modal">Close</button>
                     </div>
 
@@ -88,7 +88,6 @@
             <table class="table table-responsive">
                 <thead style="background-color: #337ab7">
                 <tr>
-                    <th>ID</th>
                     <th>Item Code</th>
                     <th>Process Name</th>
                     <th>Process Status</th>
@@ -98,7 +97,6 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="data in getProcess">
-                    <th scope="row">{{data.id}}</th>
                     <td>{{data.ItemCode}}</td>
                     <td>{{data.ProcessName}}</td>
                     <td>{{data.Status}}</td>

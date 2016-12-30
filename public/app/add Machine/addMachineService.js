@@ -17,8 +17,7 @@
 
                     method: 'post',
                     url: '/getMachine/Data'
-
-
+                    
                 });
 
 
@@ -30,7 +29,6 @@
                     method: 'post',
                     url: '/addMachine/data',
                     data: {
-                        id: data.id,
                         MachineId: data.MachineId,
                         Machinemake: data.Machinemake,
                         MachineName: data.MachineName,
@@ -50,7 +48,7 @@
                     method: 'post',
                     url: '/deleteMachine/data',
                     data: {
-                        id: data.id
+                        MachineId: data.MachineId
                     }
 
                 })

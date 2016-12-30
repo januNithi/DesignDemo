@@ -16,6 +16,10 @@ module.exports=function (app) {
 
     app.post('/getProcess/data',config.getProcess);
     app.post('/addProcess/data',config.addProcess);
+    app.post('/deleteProcess/data',config.deleteProcess);
+    
+    app.post('/postWorkOrderDetail/data',config.addWorkOrder)
+   
 
     
 };
