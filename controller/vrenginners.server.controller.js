@@ -3,10 +3,16 @@ var config=require('../config/manager/vrenginners.server.manager');
 
 exports.getEmployee=function(req,res)
 {
-    config.getEmployeeDetails().then(function(result)
+    config.getEmployeeDetails(function(err,result)
     {
 
-        res.send(result);
+        if(err){
+            console.log(err);
+            res.send(500,{error:err});
+        }else{
+            res.send(result);
+        }
+
 
     });
 
@@ -152,20 +158,97 @@ exports.deleteProcess=function(req,res)
 };
 
 // <-------Process DATA----->
+exports.updateWorkOrderProcess = function (req,res) {
+    config.updateWorkProcess(req.body,function(err,result)
+    {
+
+        if(err){
+            console.log(err);
+            res.send(500,{error:err});
+        }else{
+            res.send(result);
+        }
+
+
+    });
+};
+
+exports.deleteWorkOrderProcess = function (req,res) {
+    config.deleteWorkProcess(req.body,function(err,result)
+    {
+
+        if(err){
+            console.log(err);
+            res.send(500,{error:err});
+        }else{
+            res.send(result);
+        }
+
+
+    });
+};
+
+
+exports.getWorkOrderProcess = function (req,res) {
+    config.getWorkProcess(function(err,result)
+    {
+
+        if(err){
+            console.log(err);
+            res.send(500,{error:err});
+        }else{
+            res.send(result);
+        }
+
+
+    });
+};
 
 // <-------WorkOrder DATA----->
 
 exports.addWorkOrder=function(req,res)
 {
     var data=req.body;
-    config.addWorkOrderData(data).then(function(result)
+    config.addWorkOrderData(data,function(err,result)
     {
-
-        res.send(result);
+        if(err){
+            res.send(500,{error:err});
+        }else {
+            res.send(result);
+        }
 
     });
 
 };
 
+exports.getWorkOrderData = function (req,res) {
+    config.getWorkOrderData(function(err,result)
+    {
+
+        if(err){
+            console.log(err);
+            res.send(500,{error:err});
+        }else{
+            res.send(result);
+        }
+
+
+    });
+};
+
 // <-------WorkOrder DATA----->
 
+exports.getMachineReport = function (req,res) {
+
+    config.getMachineReport(function (err,result) {
+
+        if(err){
+            console.log(err);
+            res.send(500,{error:err});
+        }else{
+            res.send(result);
+        }
+
+    });
+
+};

@@ -9,12 +9,15 @@
         '$scope',
         'workOrderProcessService',
         'itemEntryService',
+        'addEmployeeService',
         'addProcessService',
         '$window'
     ];
 
-    function workOrderProcessController($scope,workOrderProcessService,itemEntryService,addProcessService,$window) {
+    function workOrderProcessController($scope,workOrderProcessService,itemEntryService,addEmployeeService,addProcessService,$window) {
         $scope.getIteam=[];
+        $scope.workOrderData = [];
+        $scope.employeeData = [];
         $scope.goToDashboard=function()
         {
             $window.location.href='/dashboard';
@@ -88,7 +91,38 @@
 
             });
 
+        };
+
+        $scope.editWorkOrderData = function (data) {
+
+            $scope.workorder = data;
+
+        };
+
+        function getWorkOrderData() {
+            workOrderProcessService.getWorkOrderData().then(function (result,err) {
+                if(err){
+                    console.log("Error--->"+err);
+                }else{
+                    $scope.workOrderData = result.data;
+                }
+
+            });
         }
+
+        function getEmployeeData() {
+            addEmployeeService.getEmployeeDetails().then(function (result,err) {
+                if(err){
+                    console.log("Error--->"+err);
+                }else{
+                    $scope.employeeData = result.data;
+                }
+
+            });
+        }
+
+        getWorkOrderData();
+        getEmployeeData();
 
      }
 })();

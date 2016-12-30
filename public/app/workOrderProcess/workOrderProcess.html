@@ -47,55 +47,60 @@
 
                         <div class="form-group">
                             <label>Item Code:</label>
-                           <select class="form-control"  ng-change="selectedItemChanged(workorder)" ng-model="workorder.itemcode">
-                               <option>--select--</option>
-                               <option ng-repeat="data in getIteam">{{data.IteamCode}}</option>
+                           <select class="form-control"  ng-change="selectedItemChanged(workorder)" ng-model="workorder.item_code">
+                               <option value="{{Number(0)}}">--select--</option>
+                               <option value="{{data.IteamCode}}" ng-repeat="data in getIteam">{{data.Name}}</option>
                            </select>
                         </div>
                         <div class="form-group">
-                            <label>Stack Quty:</label>
-                            <input type="text" ng-model="workorder.Qty"  class="form-control">
+                            <label>Stock Quantity:</label>
+                            <label>{{workorder.Qty}}</label>
                         </div>
                         <div class="form-group">
                             <label>Location:</label>
-                            <input type="text" ng-model="workorder.location"  class="form-control">
+                            <label>{{workorder.location}}</label>
+                        </div>
+                        <div class="form-group">
+                            <label>Process Status:</label>
+                            <input type="text" ng-model="workorder.Status" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Customer Name:</label>
+                            <select class="form-control"  ng-model="workorder.cus_name">
+                                <option value="{{Number(0)}}">--select--</option>
+                                <option value="emp.empId" ng-repeat="emp in employeeData">{{emp.Name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Process Quantity:</label>
+                            <input type="text" ng-model="workorder.process_qty"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Purchase OrderNo:</label>
-                            <input type="text" ng-model="workorder.invoiceNo"  class="form-control">
+                            <input type="text" ng-model="workorder.purchase_ord_no"  class="form-control">
                         </div>
                         <!--<div class="form-group">-->
                             <!--<label>Purchase By:</label>-->
                             <!--<input type="text" ng-model="workorder.purchaseBy" class="form-control">-->
                         <!--</div>-->
-                        <div class="form-group">
-                            <label>Process Status:</label>
-                            <input type="text" ng-model="workorder.Status" class="form-control">
-                        </div>
 
-                        <div class="form-group">
-                            <label>Customer Name:</label>
-                            <input type="text" ng-model="workorder.cusName"  class="form-control">
-                        </div>
+
+
                         <div class="form-group">
                             <label>Size:</label>
                             <input type="text" ng-model="workorder.size"  class="form-control">
                         </div>
+
                         <div class="form-group">
-                            <label>Process Quty:</label>
-                            <input type="text" ng-model="workorder.processQuty"  class="form-control">
+                            <label>Date:</label>
+                            <datepicker>
+                                <input ng-model="workorder.date" type="text" class="form-control" placeholder="please select date"/>
+                            </datepicker>
                         </div>
                         <div class="form-group">
                             <label>Entroll By:</label>
-                            <input type="text" ng-model="workorder.entrollby"  class="form-control">
+                            <input type="text" ng-model="workorder.enter_by"  class="form-control">
                         </div>
-                            <div class="form-group">
-                                <label>Date:</label>
-                                <datepicker>
-                                    <input ng-model="workorder.date" type="text" class="form-control" placeholder="please select date"/>
-                                </datepicker>
-                            </div>
-                            <br>
 
                     </div>
                     <div class="modal-footer" style="background-color: #F94C4C;">
@@ -122,7 +127,6 @@
             <table class="table table-responsive">
                 <thead style="background-color: #337ab7">
                 <tr>
-                    <th>ID</th>
                     <th>Work OrderNo</th>
                     <th>Size</th>
                     <th>Ok Quty</th>
@@ -134,20 +138,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>MAC001</td>
-                    <td>WRK001</td>
-                    <td>Mohan</td>
+                <tr ng-repeat="data in workOrderData">
+                    <th scope="row">{{data.workOrderNo}}</th>
+                    <td>{{data.size}}</td>
+                    <td>{{data.ok}}</td>
                     <td>12mm</td>
                     <td>100</td>
                     <td>Progress</td>
                     <td>Dec-19-16</td>
                     <td>
-                        <span class="fa fa-pencil-square fa-1x" style="color: red" aria-hidden="true" data-toggle="modal" data-target="#myModal" ng-click="Edit(data)"  aria-hidden="true"></span>
-                        <span class="fa fa-window-close"  style="color: red" aria-hidden="true" ng-click="delete(data)"></span>
-                        <!--<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">Edit</button>-->
-                        <!--<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">Delete</button>-->
+                        <span class="fa fa-pencil-square fa-1x" style="color: red" aria-hidden="true" data-toggle="modal" data-target="#myModal" ng-click="editData(data)"  aria-hidden="true"></span>
+
 
                     </td>
                 </tr>

@@ -38,7 +38,13 @@
            <label>Item Code:</label>
         <div class="row">
            <div class="col-md-11">
-            <input type="number" name="input" class="form-control" ng-model="example.value" min="0" max="100" required>
+            <select ng-model="machineData">
+
+                <option value="{{Number(0)}}">-----Select Machine</option>
+
+                <option ng-repeat="machine in machineDetails">{{machine.machineName}}</option>
+
+            </select>
         </div>
           <div class="col-md-1">
             <button type="button" ng-click="goCheck()" class="btn btn-info">GO</button>

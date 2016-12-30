@@ -13,7 +13,9 @@
 
         return{
 
-
+            getMachineReport : function (id) {
+                return $http.get('/getMachineReport?id='+id);
+            }
         }
     }
 

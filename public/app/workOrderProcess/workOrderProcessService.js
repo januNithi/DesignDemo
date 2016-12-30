@@ -34,6 +34,9 @@
 
               });
 
+            },
+            getWorkOrderData:function () {
+                return $http.get('/getWorkOrderData');
             }
 
         }

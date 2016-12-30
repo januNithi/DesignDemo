@@ -18,9 +18,14 @@ module.exports=function (app) {
     app.post('/addProcess/data',config.addProcess);
     app.post('/deleteProcess/data',config.deleteProcess);
     
-    app.post('/postWorkOrderDetail/data',config.addWorkOrder)
-   
+    app.post('/postWorkOrderDetail/data',config.addWorkOrder);
+    app.get('/getWorkOrderData',config.getWorkOrderData);
 
+    app.post('/updateWorkOrderProcess',config.updateWorkOrderProcess);
+    app.post('/deleteWorkProcess',config.deleteWorkOrderProcess);
+    app.get('/getWorkProcess',config.getWorkOrderProcess);
+
+    app.get('/getMachineReport',config.getMachineReport);
     
 };
 
