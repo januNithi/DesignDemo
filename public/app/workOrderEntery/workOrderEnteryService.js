@@ -8,13 +8,15 @@
         '$http'
     ];
 
-    function workOrderEnteryService($window,$http)
-    {
+    function workOrderEnteryService($window,$http) {
 
-        return{
+        return {
 
-            getMachineReport : function (id) {
-                return $http.get('/getMachineReport?id='+id);
+            getMachineReport: function (id) {
+                return $http({
+                    method: 'get',
+                    url: '/getMachineReport?id=' + id
+                });
             }
         }
     }

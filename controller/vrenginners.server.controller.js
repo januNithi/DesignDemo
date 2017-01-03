@@ -209,6 +209,7 @@ exports.getWorkOrderProcess = function (req,res) {
 exports.addWorkOrder=function(req,res)
 {
     var data=req.body;
+
     config.addWorkOrderData(data,function(err,result)
     {
         if(err){
@@ -222,7 +223,8 @@ exports.addWorkOrder=function(req,res)
 };
 
 exports.getWorkOrderData = function (req,res) {
-    config.getWorkOrderData(function(err,result)
+
+    config.getWorkOrderDatas(function(err,result)
     {
 
         if(err){
@@ -236,16 +238,33 @@ exports.getWorkOrderData = function (req,res) {
     });
 };
 
-// <-------WorkOrder DATA----->
-
-exports.getMachineReport = function (req,res) {
-
-    config.getMachineReport(function (err,result) {
+exports.deleteWorkOrderData = function (req,res) {
+ var data=req.body;
+    console.log(data);
+    config.deleteWorkOrderDatas(data,function(err,result)
+    {
 
         if(err){
             console.log(err);
             res.send(500,{error:err});
         }else{
+            res.send(result);
+        }
+
+
+    });
+};
+// <-------WorkOrder DATA----->
+
+exports.getMachineReport = function (req,res) {
+
+    config.getMachineReports(function (err,result) {
+
+        if(err){
+            console.log(err);
+            res.send(500,{error:err});
+        }else{
+            console.log(result);
             res.send(result);
         }
 

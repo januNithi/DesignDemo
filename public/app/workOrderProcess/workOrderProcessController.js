@@ -9,12 +9,12 @@
         '$scope',
         'workOrderProcessService',
         'itemEntryService',
-        'addEmployeeService',
+        'addEmployeeservice',
         'addProcessService',
         '$window'
     ];
 
-    function workOrderProcessController($scope,workOrderProcessService,itemEntryService,addEmployeeService,addProcessService,$window) {
+    function workOrderProcessController($scope,workOrderProcessService,itemEntryService,addEmployeeservice,addProcessService,$window) {
         $scope.getIteam=[];
         $scope.workOrderData = [];
         $scope.employeeData = [];
@@ -53,7 +53,7 @@
 
          angular.forEach($scope.getIteam,function(value,index){
 
-             if(data.itemcode==value.IteamCode)
+             if(Number(data.item_code)==value.IteamCode)
              {
                $scope.workorder.Qty=value.Qty;
                $scope.workorder.location=value.location;
@@ -65,7 +65,7 @@
          });
             angular.forEach($scope.getProcess,function(value,index){
 
-                if(data.itemcode==value.ItemCode)
+                if(data.item_code==value.ItemCode)
                 {
                     $scope.workorder.Status=value.Status;
 
@@ -80,13 +80,40 @@
 
 
      };
+        $scope.close=function()
+        {
+            $scope.workorder='';
 
-        $scope.saveWorkOrder=function()
+        };
+
+        $scope.delete=function(data)
         {
 
-            workOrderProcessService.addWorkOrderDetail().then(function(result){
+            workOrderProcessService.deleteWorkOrderDetail(data).then(function(result){
+
+               alert('Successfully Deleted !!!');
+                $scope.getWorkOrderData();
+
+
+            });
+
+
+
+        };
+
+        $scope.saveWorkOrder=function(data)
+        {
+            var date=new Date(data.date).toISOString();
+
+            data.date=date;
+
+            workOrderProcessService.addWorkOrderDetail(data).then(function(result){
 
                 $scope.getWorkOrder=result.data;
+                $scope.workorder='';
+
+                alert('Successfully Registerd !!!');
+                $scope.getWorkOrderData();
 
 
             });
@@ -99,8 +126,8 @@
 
         };
 
-        function getWorkOrderData() {
-            workOrderProcessService.getWorkOrderData().then(function (result,err) {
+        $scope.getWorkOrderData=function() {
+            workOrderProcessService.getWorkOrderDetails().then(function (result,err) {
                 if(err){
                     console.log("Error--->"+err);
                 }else{
@@ -108,10 +135,10 @@
                 }
 
             });
-        }
+        };
 
-        function getEmployeeData() {
-            addEmployeeService.getEmployeeDetails().then(function (result,err) {
+        $scope.getEmployeeData=function() {
+            addEmployeeservice.getEmpDetail().then(function (result,err) {
                 if(err){
                     console.log("Error--->"+err);
                 }else{
@@ -119,10 +146,10 @@
                 }
 
             });
-        }
+        };
 
-        getWorkOrderData();
-        getEmployeeData();
+        $scope.getWorkOrderData();
+        $scope.getEmployeeData();
 
      }
 })();

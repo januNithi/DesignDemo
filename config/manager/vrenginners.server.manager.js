@@ -93,7 +93,7 @@ function getMachineDetails() {
         {
 
             deferred.resolve(result);
-            console.log(result);
+
 
         }
 
@@ -250,7 +250,6 @@ function getProcessDetails() {
         }else
         {
             deferred.resolve(result);
-            console.log(result);
         }
     });
     return deferred.promise;
@@ -317,40 +316,55 @@ function deleteProcessDetails(data) {
 
 
 function addWorkOrderData(data,cb){
+
     var query = '';
     if(data.id){
-        query = "update workorderentry set item_code="+data.item_code+", cus_name = "+data.cus_name+",";
-        query += " size='"+data.size+"',process_qty='"+data.process_qty+"',purchase_ord_no = '"+data.purchase_ord_no+"'";
-        query += ",date='"+data.date+"',enter_by='"+data.enter_by+"' where data.id = "+data.id;
+        query = "update workorderentry set item_code="+data.itemcode+", emp_name = "+data.emp_name+",";
+        query += " size='"+data.size+"',process_qty='"+data.processQuty+"',invoiceNo = '"+data.invoiceNo+"'";
+        query += ",date='"+data.date+"',enter_by='"+data.entrollby+"' where data.id = "+data.id;
     }else{
-        query = "insert into workorderentry(item_code,cus_name,size,process_qty,purchase_ord_no,";
+        query = "insert into workorderentry(item_code,emp_name,size,process_qty,invoiceNo,";
         query += " date,enter_by) values(";
-        query += ""+ data.item_code + ","+data.cus_name+",'" + data.size + "','" + data.process_qty;
-        query +=  "','" + data.purchase_ord_no + "','"+data.date+"','"+data.enter_by+"')";
+        query += ""+ data.itemcode + ","+data.emp_name+",'" + data.size + "','" + data.processQuty;
+        query +=  "','" + data.invoiceNo + "','"+data.date+"','"+data.entrollby+"')";
     }
     // var query = 'Update workorderentry set status = "Completed" where id = '+data.id;
     con.query(query,function (err,result) {
+
        cb(err,result);
     });
 
 };
 
-function getWorkOrderData(cb) {
-    var query="Select w.item_code,w.cus_name,w.size,w.process_qty,w.purchase_ord_no,w.date,w.enter_by,";
+function getWorkOrderDatas(cb) {
+
+    var query="Select w.id,w.item_code,w.emp_name,w.size,w.process_qty,w.invoiceNo,w.date,w.enter_by,";
     query += " a.Qty,a.location,p.Status";
     query += " from workorderentry as w left join additeam as a on a.IteamCode = w.item_code left join addprocess as p";
     query += " on p.itemCode = w.item_code";
     con.query(query,function(err,result){
+
 
         cb(err,result);
 
     });
 }
 
+function deleteWorkOrderDatas(data,cb) {
 
-function deleteWorkOrderData(id,cb) {
+    var query="delete from workorderentry where id = "+data.id;
 
-    var query="delete from workorderentry where id = "+id;
+    con.query(query,function(err,result){
+
+        cb(err,result);
+
+    });
+
+};
+
+function deleteWorkProcess(id,cb) {
+
+    var query="delete from work_process where id = "+id;
 
     con.query(query,function(err,result){
 
@@ -362,7 +376,7 @@ function deleteWorkOrderData(id,cb) {
 
 function updateWorkProcess(data,cb) {
 
-    var query = 'Update workorderentry set status = "Completed" where id = '+data.id;
+    var query = 'Update work_process set status = "Completed" where id = '+data.id;
 
     con.query(query,function(err,result){
 
@@ -396,15 +410,25 @@ function getWorkProcess(cb) {
     });
 };
 
-function getMachineReport(id,cb) {
+function getMachineReports(id,cb) {
+    console.log(id);
     var query = "Select m.machineId,m.machineMake,m.machineName,m.Description,";
     query += " w.wrk_ord_no,w.size,w.ok_qty,w.rjct_qty,w.nxt_process,w.crnt_process,w.date,w.status";
     query += " from addmachine as m inner join work_process";
     query += " as w on w.machineId=m.MachineId where m.MachineId = "+id;
 
     con.query(query,function(err,result){
+if(err)
+{
+    console.log(err);
+    cb(err,null);
 
-        cb(err,result);
+}else{
+    console.log(result);
+    cb(null,result);
+
+}
+
 
     });
 };
@@ -429,11 +453,12 @@ module.exports={
     deleteProcessDetails:deleteProcessDetails,
 
     addWorkOrderData:addWorkOrderData,
-    getWorkOrderData:getWorkOrderData,
+    getWorkOrderDatas:getWorkOrderDatas,
+    deleteWorkOrderDatas:deleteWorkOrderDatas,
 
     updateWorkProcess:updateWorkProcess,
     deleteWorkProcess:deleteWorkProcess,
     getWorkProcess:getWorkProcess,
 
-    getMachineReport:getMachineReport
+    getMachineReports:getMachineReports
 };

@@ -24,7 +24,7 @@
         {
 
             $scope.table=true;
-            addMachineService.getMachineReport($scope.machineData).then(function (result,error) {
+            workOrderEnteryService.getMachineReport($scope.machineData).then(function (result,error) {
 
                 if(error){
                     console.log(error);
@@ -37,7 +37,7 @@
             
         };
 
-        function getMachineDetails() {
+        $scope.getMachineDetails=function() {
             addMachineService.getMachinedata().then(function (result,error) {
 
                 if(error){
@@ -46,7 +46,8 @@
                 $scope.machineDetails = result.data;
 
             });
-        }
+        };
+        $scope.getMachineDetails();
 
     }
 

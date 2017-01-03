@@ -48,36 +48,36 @@
                         <div class="form-group">
                             <label>Item Code:</label>
                            <select class="form-control"  ng-change="selectedItemChanged(workorder)" ng-model="workorder.item_code">
-                               <option value="{{Number(0)}}">--select--</option>
-                               <option value="{{data.IteamCode}}" ng-repeat="data in getIteam">{{data.Name}}</option>
+                               <option ng-value="Number(0)">--select--</option>
+                               <option ng-value="data.IteamCode" ng-repeat="data in getIteam">{{data.Name}}</option>
                            </select>
                         </div>
                         <div class="form-group">
                             <label>Stock Quantity:</label>
-                            <label>{{workorder.Qty}}</label>
+                            <label><u>{{workorder.Qty}}</u></label>
                         </div>
                         <div class="form-group">
                             <label>Location:</label>
-                            <label>{{workorder.location}}</label>
+                            <label><u>{{workorder.location}}</u></label>
                         </div>
                         <div class="form-group">
                             <label>Process Status:</label>
-                            <input type="text" ng-model="workorder.Status" class="form-control">
+                            <input type="text" ng-model="workorder.Status"  placeholder="plz fill Status"  class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Customer Name:</label>
-                            <select class="form-control"  ng-model="workorder.cus_name">
+                            <label>Employee Name:</label>
+                            <select class="form-control"  ng-model="workorder.emp_name">
                                 <option value="{{Number(0)}}">--select--</option>
-                                <option value="emp.empId" ng-repeat="emp in employeeData">{{emp.Name}}</option>
+                                <option value="{{emp.empId}}" ng-repeat="emp in employeeData">{{emp.Name}}</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Process Quantity:</label>
-                            <input type="text" ng-model="workorder.process_qty"  class="form-control">
+                            <input type="text" ng-model="workorder.process_qty"  placeholder="please fill Quty"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Purchase OrderNo:</label>
-                            <input type="text" ng-model="workorder.purchase_ord_no"  class="form-control">
+                            <input type="text" ng-model="workorder.invoiceNo"  class="form-control">
                         </div>
                         <!--<div class="form-group">-->
                             <!--<label>Purchase By:</label>-->
@@ -88,18 +88,18 @@
 
                         <div class="form-group">
                             <label>Size:</label>
-                            <input type="text" ng-model="workorder.size"  class="form-control">
+                            <input type="text" ng-model="workorder.size"  placeholder="please fill size"  class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label>Date:</label>
                             <datepicker>
-                                <input ng-model="workorder.date" type="text" class="form-control" placeholder="please select date"/>
+                                <input ng-model="workorder.date"  type="text" class="form-control" placeholder="please select date"/>
                             </datepicker>
                         </div>
                         <div class="form-group">
                             <label>Entroll By:</label>
-                            <input type="text" ng-model="workorder.enter_by"  class="form-control">
+                            <input type="text" ng-model="workorder.enter_by"  placeholder="please fill EntrollBy"  class="form-control">
                         </div>
 
                     </div>
@@ -128,26 +128,33 @@
                 <thead style="background-color: #337ab7">
                 <tr>
                     <th>Work OrderNo</th>
+                    <th>ItemCode</th>
+                    <th>Ok location</th>
+                    <th>Stock Quty</th>
                     <th>Size</th>
-                    <th>Ok Quty</th>
-                    <th>Reject Quty</th>
-                    <th>Next Process</th>
-                    <th>Curent process</th>
+                    <th>Emp_Id</th>
+                    <th>Entroll_By</th>
+                    <th>Purchase_OrderNo</th>
+                    <th>Process_Quty</th>
                     <th>Date</th>
                     <th>Option</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="data in workOrderData">
-                    <th scope="row">{{data.workOrderNo}}</th>
+                <tr ng-repeat="data in workOrderData track by $index ">
+                    <th scope="row">{{data.id}}</th>
+                    <td>{{data.item_code}}</td>
+                    <td>{{data.location}}</td>
+                    <td>{{data.Qty}}</td>
                     <td>{{data.size}}</td>
-                    <td>{{data.ok}}</td>
-                    <td>12mm</td>
-                    <td>100</td>
-                    <td>Progress</td>
-                    <td>Dec-19-16</td>
+                    <td>{{data.emp_name}}</td>
+                    <td>{{data.enter_by}}</td>
+                    <td>{{data.invoiceNo}}</td>
+                    <td>{{data.process_qty}}</td>
+                    <td>{{data.date | date : format }}</td>
                     <td>
-                        <span class="fa fa-pencil-square fa-1x" style="color: red" aria-hidden="true" data-toggle="modal" data-target="#myModal" ng-click="editData(data)"  aria-hidden="true"></span>
+                        <span class="fa fa-pencil-square fa-1x" style="color: red" aria-hidden="true" data-toggle="modal" data-target="#myModal" ng-click="editWorkOrderData(data)"  aria-hidden="true"></span>
+                        <span class="fa fa-window-close"  style="color: red" aria-hidden="true" ng-click="delete(data)"></span>
 
 
                     </td>

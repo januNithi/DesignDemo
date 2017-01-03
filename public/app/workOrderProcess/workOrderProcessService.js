@@ -20,14 +20,15 @@
                   method:'post',
                   url:'/postWorkOrderDetail/data',
                   data:{
-                      itemcode:data.itemcode,
+                      id:data.id,
+                      itemcode:data.item_code,
                       Qty:data.Qty,
                       location:data.location,
                       invoiceNo:data.invoiceNo,
-                      cusName:data.cusName,
+                      emp_name:data.emp_name,
                       size:data.size,
-                      processQuty:data.processQuty,
-                      entrollby:data.entrollby,
+                      processQuty:data.process_qty,
+                      entrollby:data.purchaseBy,
                       date:data.date
                   }
 
@@ -35,8 +36,24 @@
               });
 
             },
-            getWorkOrderData:function () {
-                return $http.get('/getWorkOrderData');
+            getWorkOrderDetails:function () {
+                return $http({
+                    method:'post',
+                    url:'/getWorkOrderData/data'
+
+                });
+            },
+            deleteWorkOrderDetail:function(data){
+
+                return $http({
+                    method:'post',
+                    url:'/deleteWorkOrderData/data',
+                    data:{
+                        id:data.id
+                    }
+
+                });
+
             }
 
         }

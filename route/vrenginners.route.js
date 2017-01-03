@@ -19,7 +19,8 @@ module.exports=function (app) {
     app.post('/deleteProcess/data',config.deleteProcess);
     
     app.post('/postWorkOrderDetail/data',config.addWorkOrder);
-    app.get('/getWorkOrderData',config.getWorkOrderData);
+    app.post('/getWorkOrderData/data',config.getWorkOrderData);
+    app.post('/deleteWorkOrderData/data',config.deleteWorkOrderData);
 
     app.post('/updateWorkOrderProcess',config.updateWorkOrderProcess);
     app.post('/deleteWorkProcess',config.deleteWorkOrderProcess);

@@ -38,11 +38,11 @@
            <label>Item Code:</label>
         <div class="row">
            <div class="col-md-11">
-            <select ng-model="machineData">
+            <select ng-model="machineData" class="form-control">
 
-                <option value="{{Number(0)}}">-----Select Machine</option>
+                <option value="{{Number(0)}}">-----Select Machine------</option>
 
-                <option ng-repeat="machine in machineDetails">{{machine.machineName}}</option>
+                <option value="{{machine.MachineId}}" ng-repeat="machine in machineDetails">{{machine.MachineName}}</option>
 
             </select>
         </div>

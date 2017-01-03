@@ -35,7 +35,7 @@
             })
             .when('/machineProcess', {
             templateUrl: '../app/machineProcess/machineProcess.html',
-            controller: 'machineProcessController'
+            controller: 'workOrderProcessController'
             })
             .when('/workOrderProcess', {
             templateUrl: '../app/workOrderProcess/workOrderProcess.html',

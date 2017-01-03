@@ -28,8 +28,9 @@ module.exports=function(){
 
     app.use(express.static('./public'));
 
-    require('../route/layout.route')(app);
+
     require('../route/vrenginners.route')(app);
+    require('../route/layout.route')(app);
 
     
     return app;
