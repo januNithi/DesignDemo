@@ -47,7 +47,25 @@
 
                         <div class="form-group">
                             <label class="control-label">Work OrderNo:</label>
-                            <input type="text" ng-model="editableData.wrk_ord_no"  class="form-control">
+                            <select class="form-control" ng-model="editableData.wrk_ord_no" ng-change="showData()">
+
+                                <option ng-value=0>------SELECT OrderNo-------</option>
+
+                                <option ng-repeat="order in workOrder" ng-value="order.id">{{order.itemName + '-' + order.Name + '-' + order.invoiceNo}}</option>
+
+                            </select>
+                            <!--<input type="text" ng-model="editableData.wrk_ord_no"  class="form-control">-->
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Machine:</label>
+                            <select class="form-control" ng-model="editableData.machineId">
+
+                                <option ng-value=0>------SELECT OrderNo-------</option>
+
+                                <option ng-repeat="machine in machineData" ng-value="machine.MachineId">{{machine.MachineName}}</option>
+
+                            </select>
+                            <!--<input type="text" ng-model="editableData.wrk_ord_no"  class="form-control">-->
                         </div>
                         <div class="form-group">
                             <label class="control-label">Size:</label>
@@ -55,10 +73,10 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">Status:</label>
-                                <input type="radio" id="radio1" ng-model="stdentData.complete" value="Male" tabindex="1" />
+                                <input type="radio" id="radio1" ng-model="editableData.complete" value="Male" tabindex="1" />
                                 <label for="radio1">Complete</label>&nbsp;
 
-                                <input type="radio" id="radio2" ng-model="stdentData.Inprocess" value="Female" tabindex="2"/>
+                                <input type="radio" id="radio2" ng-model="editableData.Inprocess" value="Female" tabindex="2"/>
                                 <label for="radio1">Inprocess</label>
                                 <!--<input class="form-control" id="inputEmail3" ng-model="stdentData.Gender" placeholder="Gender">-->
 
@@ -75,9 +93,9 @@
                             <label class="control-label">Next Process:</label>
                             <select class="form-control" ng-model="editableData.nxt_process">
 
-                                <option value="0">------SELECT PROCESS-------</option>
+                                <option ng-value=0>------SELECT PROCESS-------</option>
 
-                                <option ng-repeat="process in processList" value="process.id">{{process.ProcessName}}</option>
+                                <option ng-repeat="process in processList" ng-value="process.id">{{process.ProcessName}}</option>
 
                             </select>
                         </div>
@@ -85,9 +103,9 @@
                             <label class="control-label">Current Process:</label>
                             <select class="form-control" ng-model="editableData.crnt_process">
 
-                                <option value="0">------SELECT PROCESS-------</option>
+                                <option ng-value=0>------SELECT PROCESS-------</option>
 
-                                <option ng-repeat="process in processList" value="process.id">{{process.ProcessName}}</option>
+                                <option ng-repeat="process in processList" ng-value="process.id">{{process.ProcessName}}</option>
 
                             </select>
                         </div>
@@ -127,6 +145,7 @@
                 <thead style="background-color: #337ab7">
                 <tr>
                     <th>ID</th>
+                    <th>Machine</th>
                     <th>Work OrderNo</th>
                     <th>Size</th>
                     <th>Ok Quty</th>
@@ -140,12 +159,13 @@
                 <tbody>
                 <tr ng-repeat="data in workOrderData">
                     <th scope="row">{{data.id}}</th>
+                    <th>{{data.MachineName}}</th>
                     <td>{{data.wrk_ord_no}}</td>
                     <td>{{data.size}}</td>
                     <td>{{data.ok_qty}}</td>
                     <td>{{data.rjct_qty}}</td>
-                    <td>{{data.nxt_process}}</td>
-                    <td>{{data.crnt_process}}</td>
+                    <td>{{data.nxt_process_name}}</td>
+                    <td>{{data.crnt_process_name}}</td>
                     <td>{{data.date}}</td>
                     <td>
                         <span class="fa fa-pencil-square fa-1x" style="color: red" aria-hidden="true" data-toggle="modal" data-target="#myModal" ng-click="editData(data)"  aria-hidden="true"></span>

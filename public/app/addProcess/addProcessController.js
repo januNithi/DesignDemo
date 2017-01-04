@@ -13,6 +13,9 @@
     function addProcessController($scope,addProcessService,itemEntryService,$window) {
         $scope.getProcess=[];
         $scope.getIteam=[];
+        $scope.process = {
+            ItemCode : 0
+        };
         $scope.goToDashboard=function()
         {
             $window.location.href='/dashboard';
@@ -48,7 +51,9 @@
                 
                 alert('Successfully Registered !!!!');
                 $scope.getProcessData();
-                $scope.process='';
+                $scope.process = {
+                    ItemCode : 0
+                };
                 
 
 
@@ -80,7 +85,9 @@
         };
         $scope.close=function()
         {
-            $scope.process='';
+            $scope.process = {
+                ItemCode : 0
+            };
 
         }
 

@@ -1,26 +1,26 @@
 
 (function(){
 
-    angular.module('myApp').factory('workOrderProcessService',workOrderProcessService);
+    angular.module('myApp').factory('machineProcessService',machineProcessService);
 
-    workOrderProcessService.$inject = [
+    machineProcessService.$inject = [
         '$window',
         '$http'
     ];
 
-    function workOrderProcessService($window,$http)
+    function machineProcessService($window,$http)
     {
 
         return{
 
             updateWorkProcess : function (data) {
-                $http.post('/updateWorkOrderProcess',data);
+                return $http.post('/updateWorkOrderProcess',data);
             },
             deleteWorkProcess : function (id) {
-                $http.post('/deleteWorkProcess',id);
+                return $http.post('/deleteWorkProcess',{id:id});
             },
             getWorkProcess : function () {
-                $http.get('/getWorkProcess');
+                return $http.get('/getWorkProcess');
             }
 
         }

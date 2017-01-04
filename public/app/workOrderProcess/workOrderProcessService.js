@@ -27,8 +27,8 @@
                       invoiceNo:data.invoiceNo,
                       emp_name:data.emp_name,
                       size:data.size,
-                      processQuty:data.process_qty,
-                      entrollby:data.purchaseBy,
+                      process_qty:data.process_qty,
+                      entrollby:data.enter_by,
                       date:data.date
                   }
 

@@ -12,7 +12,7 @@
     function workOrderEnteryController($scope,workOrderEnteryService,addMachineService,$window) {
         $scope.table=false;
         $scope.machineDetails = [];
-        $scope.machineData = '';
+        $scope.machineData = 0;
         $scope.reportData = [];
         $scope.goToDashboard=function()
         {
@@ -23,14 +23,15 @@
         $scope.goCheck=function()
         {
 
-            $scope.table=true;
+
             workOrderEnteryService.getMachineReport($scope.machineData).then(function (result,error) {
 
                 if(error){
                     console.log(error);
                 }
                 else {
-                    $scope.reportData = result.data
+                    $scope.reportData = result.data;
+                    $scope.table=true;
                 }
 
             });

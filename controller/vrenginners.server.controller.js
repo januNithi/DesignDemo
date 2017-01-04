@@ -174,7 +174,7 @@ exports.updateWorkOrderProcess = function (req,res) {
 };
 
 exports.deleteWorkOrderProcess = function (req,res) {
-    config.deleteWorkProcess(req.body,function(err,result)
+    config.deleteWorkProcess(req.body.id,function(err,result)
     {
 
         if(err){
@@ -258,7 +258,7 @@ exports.deleteWorkOrderData = function (req,res) {
 
 exports.getMachineReport = function (req,res) {
 
-    config.getMachineReports(function (err,result) {
+    config.getMachineReports(req.query.id,function (err,result) {
 
         if(err){
             console.log(err);

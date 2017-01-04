@@ -40,9 +40,9 @@
            <div class="col-md-11">
             <select ng-model="machineData" class="form-control">
 
-                <option value="{{Number(0)}}">-----Select Machine------</option>
+                <option ng-value=0>-----Select Machine------</option>
 
-                <option value="{{machine.MachineId}}" ng-repeat="machine in machineDetails">{{machine.MachineName}}</option>
+                <option ng-value="machine.MachineId" ng-repeat="machine in machineDetails">{{machine.MachineName}}</option>
 
             </select>
         </div>
@@ -61,24 +61,30 @@
                 <thead style="background-color: #337ab7">
                 <tr>
                     <th>ID</th>
-                    <th>Machine No</th>
-                    <th>Employee Name</th>
-                    <th>Progress</th>
-                    <th>Curent Progress</th>
-                    <th>Quty</th>
-                    <th>Order Date</th>
+                    <th>Machine Name</th>
+                    <th>Work Order Number</th>
+                    <th>Status</th>
+                    <th>Size</th>
+                    <th>Ok Quty</th>
+                    <th>Reject Quty</th>
+                    <th>Next Process</th>
+                    <th>Current Process</th>
+                    <th>Date</th>
 
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>MAC001</td>
-                    <td>WRK001</td>
-                    <td>Mohan</td>
-                    <td>12mm</td>
-                    <td>100</td>
-                    <td>Dec-19-16</td>
+                    <th>{{reportData.id}}</th>
+                    <th>{{reportData.MachineName}}</th>
+                    <th>{{reportData.wrk_ord_no}}</th>
+                    <th>{{reportData.status}}</th>
+                    <th>{{reportData.size}}</th>
+                    <th>{{reportData.ok_qty}}</th>
+                    <th>{{reportData.rjct_qty}}</th>
+                    <th>{{reportData.nxt_process_name}}</th>
+                    <th>{{reportData.crnt_process_name}}</th>
+                    <th>{{reportData.date}}</th>
                 </tr>
                 </tbody>
             </table>

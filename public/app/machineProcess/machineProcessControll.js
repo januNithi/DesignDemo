@@ -3,16 +3,18 @@
  */
 (function(){
 
-    angular.module('myApp').controller('workOrderProcessController',workOrderProcessController);
+    angular.module('myApp').controller('machineProcessController',machineProcessController);
 
-    workOrderProcessController.$inject = [
+    machineProcessController.$inject = [
         '$scope',
+        'machineProcessService',
         'workOrderProcessService',
+        'addMachineService',
         'addProcessService',
         '$window'
     ];
 
-    function workOrderProcessController($scope,workOrderProcessService,addProcessService,$window) {
+    function machineProcessController($scope,machineProcessService,workOrderProcessService,addMachineService,addProcessService,$window) {
 
         $scope.goToDashboard=function()
         {
@@ -22,8 +24,10 @@
 
         $scope.processList = [];
         $scope.editableData = {
-            crnt_process : '0',
-            nxt_process : '0'
+            crnt_process : 0,
+            nxt_process : 0,
+            wrk_ord_no : 0,
+            machineId : 0
         };
         $scope.workOrderData = [];
 
@@ -39,34 +43,60 @@
             $scope.editableData = process;
         };
 
+        $scope.showData = function () {
+
+            angular.forEach($scope.workOrder,function (value,index) {
+
+                if(value.item_code = $scope.editableData.wrk_ord_no){
+                    $scope.editableData.size = value.size;
+                }
+
+            });
+
+        };
+
         $scope.updateWorkOrderProcess = function () {
-            workOrderProcessService.updateWorkProcess($scope.editableData).then(function (result,err) {
+            $scope.editableData.date = new Date($scope.editableData.date).toISOString();
+
+            machineProcessService.updateWorkProcess($scope.editableData).then(function (result,err) {
                 if(err){
                     alert(err);
                 }else{
                     alert("Successfully Updated");
-                    $scope.editableData = {};
+                    $scope.editableData = {
+                        crnt_process : 0,
+                        nxt_process : 0,
+                        wrk_ord_no : 0,
+                        machineId : 0
+                    };
+                    getWorkOrderProcess();
                 }
             });
         };
 
         $scope.close = function () {
-            $scope.editableData = {};
+            $scope.editableData = {
+                crnt_process : 0,
+                nxt_process : 0,
+                wrk_ord_no : 0,
+                machineId : 0
+            };
         }
 
         $scope.deleteWorkOrderProcess = function (process) {
-            workOrderProcessService.deleteWorkProcess(process.id).then(function (result,err) {
+            machineProcessService.deleteWorkProcess(process.id).then(function (result,err) {
                 if(err){
                     alert(err);
                 }else{
                     alert("Successfully Deleted");
+                    getWorkOrderProcess();
                 }
             });
         };
 
         var getWorkOrderProcess = function () {
 
-            workOrderProcessService.getWorkOrderProcess().then(function (result,err) {
+            machineProcessService.getWorkProcess().then(function (result,err) {
 
                 if(err){
                     alert(err);
@@ -77,6 +107,30 @@
             });
 
         };
+
+        var getWorkOrder = function () {
+            workOrderProcessService.getWorkOrderDetails().then(function (result,err) {
+                if(err){
+                    alert(err);
+                }else{
+                    $scope.workOrder = result.data;
+                }
+            });
+        };
+
+        var getMachineData = function () {
+            addMachineService.getMachinedata().then(function (result,err) {
+                if(err){
+                    alert(err);
+                }else{
+                    $scope.machineData = result.data;
+                }
+            });
+        };
+
+        getWorkOrder();
+        getMachineData();
+        getWorkOrderProcess();
 
     }
 

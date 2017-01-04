@@ -40,9 +40,9 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Item Code:</label>
-                            <select ng-model="process.IteamCode" class="form-control">
-                                <option value="0">---select---</option>
-                                <option ng-repeat="data in getIteam">{{data.IteamCode}}</option>
+                            <select ng-model="process.ItemCode" class="form-control">
+                                <option ng-value=0>---select---</option>
+                                <option ng-value="data.IteamCode" ng-repeat="data in getIteam">{{data.Name}}</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -97,7 +97,7 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="data in getProcess">
-                    <td>{{data.ItemCode}}</td>
+                    <td>{{data.item_name}}</td>
                     <td>{{data.ProcessName}}</td>
                     <td>{{data.Status}}</td>
                     <td>{{data.Description}}</td>

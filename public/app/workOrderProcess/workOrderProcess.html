@@ -67,8 +67,8 @@
                         <div class="form-group">
                             <label>Employee Name:</label>
                             <select class="form-control"  ng-model="workorder.emp_name">
-                                <option value="{{Number(0)}}">--select--</option>
-                                <option value="{{emp.empId}}" ng-repeat="emp in employeeData">{{emp.Name}}</option>
+                                <option value=0>--select--</option>
+                                <option ng-value="emp.empId" ng-repeat="emp in employeeData">{{emp.Name}}</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -143,11 +143,11 @@
                 <tbody>
                 <tr ng-repeat="data in workOrderData track by $index ">
                     <th scope="row">{{data.id}}</th>
-                    <td>{{data.item_code}}</td>
+                    <td>{{data.itemName}}</td>
                     <td>{{data.location}}</td>
                     <td>{{data.Qty}}</td>
                     <td>{{data.size}}</td>
-                    <td>{{data.emp_name}}</td>
+                    <td>{{data.Name}}</td>
                     <td>{{data.enter_by}}</td>
                     <td>{{data.invoiceNo}}</td>
                     <td>{{data.process_qty}}</td>
