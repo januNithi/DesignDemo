@@ -60,31 +60,31 @@
             <table class="table table-responsive" >
                 <thead style="background-color: #337ab7">
                 <tr>
-                    <th>ID</th>
+                    <th>Machine ID</th>
                     <th>Machine Name</th>
                     <th>Work Order Number</th>
-                    <th>Status</th>
                     <th>Size</th>
                     <th>Ok Quty</th>
                     <th>Reject Quty</th>
                     <th>Next Process</th>
                     <th>Current Process</th>
                     <th>Date</th>
+                    <th>Status</th>
 
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th>{{reportData.id}}</th>
-                    <th>{{reportData.MachineName}}</th>
-                    <th>{{reportData.wrk_ord_no}}</th>
-                    <th>{{reportData.status}}</th>
-                    <th>{{reportData.size}}</th>
-                    <th>{{reportData.ok_qty}}</th>
-                    <th>{{reportData.rjct_qty}}</th>
-                    <th>{{reportData.nxt_process_name}}</th>
-                    <th>{{reportData.crnt_process_name}}</th>
-                    <th>{{reportData.date}}</th>
+                <tr ng-repeat="data in reportData">
+                    <th>{{data.machineId}}</th>
+                    <th>{{data.machineName}}</th>
+                    <th>{{data.wrk_ord_no}}</th>
+                    <th>{{data.size}}</th>
+                    <th>{{data.ok_qty}}</th>
+                    <th>{{data.rjct_qty}}</th>
+                    <th>{{data.nxt_process_name}}</th>
+                    <th>{{data.crnt_process_name}}</th>
+                    <th>{{data.date | date : 'yyyy-MM-dd'}}</th>
+                    <th style="background-color: red">{{data.status}}</th>
                 </tr>
                 </tbody>
             </table>

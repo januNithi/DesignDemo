@@ -40,18 +40,18 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Item Code:</label>
-                            <select ng-model="process.ItemCode" class="form-control">
+                            <select ng-model="process.ItemCode" class="form-control" required>
                                 <option ng-value=0>---select---</option>
                                 <option ng-value="data.IteamCode" ng-repeat="data in getIteam">{{data.Name}}</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Process Name:</label>
-                            <input type="text" ng-model="process.ProcessName"  class="form-control">
+                            <input type="text" ng-model="process.ProcessName" placeholder="Process Name" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Description:</label>
-                            <input type="text"  ng-model="process.Description" class="form-control">
+                            <input type="text"  ng-model="process.Description" placeholder="Description" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Process:</label>

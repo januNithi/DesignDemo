@@ -101,7 +101,12 @@
                 if(err){
                     alert(err);
                 }else{
-                    $scope.workOrderData = result.data;
+                    angular.forEach(result.data,function (value,index) {
+                        value.date = new Date(value.date).toLocaleDateString();
+                        if((index + 1) == result.data.length){
+                            $scope.workOrderData = result.data;
+                        }
+                    });
                 }
 
             });
